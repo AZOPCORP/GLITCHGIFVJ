@@ -252,7 +252,7 @@ $('body').on('click','#imsource_T',function(){
 	triggT();
 });
 $('body').on('click','#imsource_Y',function(){
-	triggT();
+	triggY();
 });
 
 
