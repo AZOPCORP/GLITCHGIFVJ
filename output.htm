@@ -1,0 +1,28 @@
+<canvas id="outputcanvas" style="position:fixed;width:100%;height:100%;top:0px;left:0px;background-color:#000;" height="240" width="320"></canvas>
+<script>
+var videoElement = document.getElementById("outputcanvas");
+
+ function toggleFullScreen() {
+   if (!document.mozFullScreen && !document.webkitFullScreen) {
+     if (videoElement.mozRequestFullScreen) {
+       videoElement.mozRequestFullScreen();
+     } else {
+       videoElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+     }
+   } else {
+     if (document.mozCancelFullScreen) {
+       document.mozCancelFullScreen();
+     } else {
+       document.webkitCancelFullScreen();
+     }
+   }
+ }
+
+ document.addEventListener("keydown", function(e) {
+   if (e.keyCode == 13) {
+     toggleFullScreen();
+   }
+ }, false);
+
+
+</script>
