@@ -15,7 +15,9 @@ a:visited{
   color:#090;
 }
 button{
-
+  position: relative;
+  border: 1px solid #000;
+  top: -5px;
   height: 20px;
   border: 1px lime;
   background-color: #030;
@@ -26,6 +28,12 @@ button{
 button:hover{
   background-color: #0F0;
   color:#000;
+}
+.vpselect{
+  position: relative;
+
+  top: -5px;
+
 }
 select{
   font-family: 'bit';
@@ -308,11 +316,7 @@ input[type=range]:focus::-ms-fill-upper {
   background: #00ff00;
 }
 
-button {
-  position: relative;
-  border: 1px solid #000;
-  top: -5px;
-}
+
 
 .select-hidden {
   display: none;
@@ -989,10 +993,16 @@ background-size: 100% 100%;
   width: 100%;
 }
 #logo{
+  -webkit-transform: rotate(90deg);
+   -moz-transform: rotate(90deg);
+   -o-transform: rotate(90deg);
+   -ms-transform: rotate(90deg);
+   transform: rotate(90deg);
   position: absolute;
   font-size: 12px;
-  left:155px;
-  top:760px;
+  left:800px;
+  top:305px;
+
 }
 #morestuff{
   position: absolute;
@@ -1043,4 +1053,85 @@ display: inline-block;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
    color:    #060;
+}
+#link{
+  position:absolute;
+  float:right;
+  bottom:100px;
+  left:350px;
+}
+#seqbox{
+  position:absolute;
+  top:775px;
+  left:160px;
+
+  width:950px;
+  height:70px;
+  display:block;
+  border:1px solid lime;
+  background-color:#000;
+
+}
+#seqcontrols{
+  position:relative;
+  display:block;
+  width:100%;
+  height:20px;
+  padding-top: 6px;
+  background-color:#030;
+}
+#bpm{
+  position:relative;
+  top:-5px;
+  width:60px;
+}
+#seqsteps{
+   position:relative;
+  display:block;
+}
+.step{
+  margin-top:3px;
+  position:relative;
+  display:inline-block;
+  background-color:#030;
+  margin:auto;
+}
+#videopongpannel{
+position:absolute;
+background: #000;
+z-index:900;
+
+   top: 0;
+
+   width: 920px;
+   height: 1000px;
+   overflow: auto;
+display:block;
+padding:20px;
+margin-left:155px;
+opacity:0.98;
+}
+#results{
+margin-top:25px;
+  width:100%;
+
+}
+.resultbox{
+	width:260px;
+	height:260px;
+display:inline-block;
+}
+.resultbox > img{
+width:250px;
+height:auto;
+}
+#urlsubmit{
+  border:1px solid lime;
+  background: #050;
+  color:#0F0;
+}
+#urlsubmit:hover{
+  border:1px solid lime;
+  background: #0F0;
+  color:#000;
 }
