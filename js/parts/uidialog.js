@@ -1,8 +1,8 @@
-//    ________.____    .______________________   ___ ___     ________.______________ ____   ____  ____. ____   ________    _______
-//   /  _____/|    |   |   \__    ___|_   ___ \ /   |   \   /  _____/|   \_   _____/ \   \ /   / |    | \   \ /   /_   |   \   _  \
-//  /   \  ___|    |   |   | |    |  /    \  \//    ~    \ /   \  ___|   ||    __)    \   Y   /  |    |  \   Y   / |   |   /  /_\  \
-//  \    \_\  \    |___|   | |    |  \     \___\    Y    / \    \_\  \   ||     \      \     /\__|    |   \     /  |   |   \  \_/   \
-//   \______  /_______ \___| |____|   \______  /\___|_  /   \______  /___|\___  /       \___/\________|    \___/   |___| /\ \_____  /
+//    ________.____    .______________________   ___ ___     ________.______________ ____   ____  ____. ____   ________
+//   /  _____/|    |   |   \__    ___|_   ___ \ /   |   \   /  _____/|   \_   _____/ \   \ /   / |    | \   \ /   /_   |
+//  /   \  ___|    |   |   | |    |  /    \  \//    ~    \ /   \  ___|   ||    __)    \   Y   /  |    |  \   Y   / |   |
+//  \    \_\  \    |___|   | |    |  \     \___\    Y    / \    \_\  \   ||     \      \     /\__|    |   \     /  |   |
+//   \______  /_______ \___| |____|   \______  /\___|_  /   \______  /___|\___  /       \___/\________|    \___/   |___|.3.1
 
 
 $('#oscstart').click(function(){
@@ -199,6 +199,11 @@ $(document).on('change','#src_ctrl_G',function(){
 playbackctrl($(this).val(),sourceG,loopG,playmodeG,frameposG,"G");
 
 });
+$(document).on('change','#src_ctrl_H',function(){
+
+playbackctrl($(this).val(),sourceH,loopH,playmodeH,frameposH,"H");
+
+});
 $(document).on('change','#src_ctrl_W',function(){
 
 playbackctrl($(this).val(),sourceW,loopW,playmodeW,frameposW,"W");
@@ -308,14 +313,54 @@ $('body').on('click', '#outpopup', function (e)
 });
 
 
+$('body').on('click','#record',function(){
+	if($('#recformat').val()=="0"){
+	recaswebm();
+}else{
+recgif();
+}
 
+});
+$('body').on('click','#recstop',function(){
+if($('#recformat').val()=="0"){
+savewebm();
+	}else{
+savegif();
+	}
+
+});
+
+///
+$('.num').keyup(function() {
+        if (this.value != this.value.replace(/[^0-9\.]/g, '')) {
+                this.value = this.value.replace(/[^0-9\.]/g, '');
+        }
+});
 ////
 ////
 $(document).keydown(function (e)
 {
+if(!search){	
 if(!infocus){
 	switch (e.which)
 	{
+case 32:
+TapForBPM();
+break;
+	case 79:
+	if($('#recformat').val()=="0"){
+recaswebm();
+}else{
+recgif();
+}
+	break;
+	case 80:
+	if($('#recformat').val()=="0"){
+savewebm();
+}else{
+	savegif();
+}
+	break;
 	case 65:
 		triggA();
 		break;
@@ -374,6 +419,7 @@ if(!infocus){
 
 	}
 }
+}
 });
 
 
@@ -397,3 +443,21 @@ $('#bankselector li').click(function(){
 		$("#"+tab_id).removeClass('hidden');
 		$("#"+tab_id).addClass('selected-bank');
 	})
+
+//randomise sequencer options
+
+$('#randomise').click(function(){
+	seqrandomise()
+});
+$('#start').click(function(){
+	 isplay=true;
+									start();
+									})
+$('#stop').click(function(){
+	isplay=false;
+	stop();
+});
+$('#tap').click(TapForBPM);
+$('body').on("click","#rdmfx",function(){
+	randfx();
+})

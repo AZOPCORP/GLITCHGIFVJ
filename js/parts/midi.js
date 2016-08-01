@@ -1,8 +1,10 @@
-//    ________.____    .______________________   ___ ___     ________.______________ ____   ____  ____. ____   ________    _______
-//   /  _____/|    |   |   \__    ___|_   ___ \ /   |   \   /  _____/|   \_   _____/ \   \ /   / |    | \   \ /   /_   |   \   _  \
-//  /   \  ___|    |   |   | |    |  /    \  \//    ~    \ /   \  ___|   ||    __)    \   Y   /  |    |  \   Y   / |   |   /  /_\  \
-//  \    \_\  \    |___|   | |    |  \     \___\    Y    / \    \_\  \   ||     \      \     /\__|    |   \     /  |   |   \  \_/   \
-//   \______  /_______ \___| |____|   \______  /\___|_  /   \______  /___|\___  /       \___/\________|    \___/   |___| /\ \_____  /
+//    ________.____    .______________________   ___ ___     ________.______________ ____   ____  ____. ____   ________
+//   /  _____/|    |   |   \__    ___|_   ___ \ /   |   \   /  _____/|   \_   _____/ \   \ /   / |    | \   \ /   /_   |
+//  /   \  ___|    |   |   | |    |  /    \  \//    ~    \ /   \  ___|   ||    __)    \   Y   /  |    |  \   Y   / |   |
+//  \    \_\  \    |___|   | |    |  \     \___\    Y    / \    \_\  \   ||     \      \     /\__|    |   \     /  |   |
+//   \______  /_______ \___| |____|   \______  /\___|_  /   \______  /___|\___  /       \___/\________|    \___/   |___|.3.1
+
+
 
 
 $('body').on('click','#startaudio',function (){
@@ -99,12 +101,20 @@ $('#messagebox').html('midi disabled');
 
 
 function ennablemidi(){
+   var ntindex = 0;
 $('.potard').each(function(){
 
 	potardslist[pi] = $(this);
 pi++;
 })
 
+
+$('.assign-note').each(function(){
+
+  $(this).attr("data-bind",keyb_def_map[ntindex]);
+  notelist[ntindex]=$(this);
+  ntindex++;
+})
 
 
 if (navigator.requestMIDIAccess) {
@@ -144,14 +154,84 @@ if(midion){
     // pressure / tilt on
     // pressure: 176, cmd 11:
     // bend: 224, cmd: 14
+
+    console.log(type)
 if(midilearn){
 	cc = data[1];
 $('#messagebox').html('control '+cc+' selected, double click param to assign')
 }else{
 	//cc= null;
 }
+if(type==144){
+console.log(data[1]+ " "+ typeof(data[1]));
+for(var i=0;i<notelist.length;i++){
+
+  if(notelist[i].data('bind')==data[1]){
+  var y = notelist[i].text().replace(/ /g,'');
 
 
+
+  switch(y){
+
+   case "A":
+
+   triggA();
+   break;
+   case "Z":
+   triggZ();
+   break;
+   case "E":
+   triggE();
+   break;
+   case "R":
+   triggR();
+   break;
+   case "T":
+   triggT();
+   break;
+   case "Y":
+   triggY();
+   break;
+   case "Q":
+   triggQ();
+   break;
+   case "S":
+   triggS();
+   break;
+   case "D":
+   triggD();
+   break;
+   case "F":
+   triggF();
+   break;
+   case "G":
+   triggG();
+   break;
+   case "H":
+   triggH();
+   break;
+   case "W":
+   triggW();
+   break;
+   case "X":
+   triggX();
+   break;
+   case "C":
+   triggC();
+   break;
+   case "V":
+   triggV();
+   break;
+   case "B":
+   triggB();
+   break;
+   case "N":
+   triggN();
+   break;
+  }
+}
+}
+}
   for (var i = 0; i<potardslist.length;i++){
   	if(potardslist[i].data('bind')==data[1]){
   		var x = potardslist[i].attr('max');

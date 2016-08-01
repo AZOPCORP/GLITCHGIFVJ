@@ -1,8 +1,8 @@
-//    ________.____    .______________________   ___ ___     ________.______________ ____   ____  ____. ____   ________    _______
-//   /  _____/|    |   |   \__    ___|_   ___ \ /   |   \   /  _____/|   \_   _____/ \   \ /   / |    | \   \ /   /_   |   \   _  \
-//  /   \  ___|    |   |   | |    |  /    \  \//    ~    \ /   \  ___|   ||    __)    \   Y   /  |    |  \   Y   / |   |   /  /_\  \
-//  \    \_\  \    |___|   | |    |  \     \___\    Y    / \    \_\  \   ||     \      \     /\__|    |   \     /  |   |   \  \_/   \
-//   \______  /_______ \___| |____|   \______  /\___|_  /   \______  /___|\___  /       \___/\________|    \___/   |___| /\ \_____  /
+//    ________.____    .______________________   ___ ___     ________.______________ ____   ____  ____. ____   ________
+//   /  _____/|    |   |   \__    ___|_   ___ \ /   |   \   /  _____/|   \_   _____/ \   \ /   / |    | \   \ /   /_   |
+//  /   \  ___|    |   |   | |    |  /    \  \//    ~    \ /   \  ___|   ||    __)    \   Y   /  |    |  \   Y   / |   |
+//  \    \_\  \    |___|   | |    |  \     \___\    Y    / \    \_\  \   ||     \      \     /\__|    |   \     /  |   |
+//   \______  /_______ \___| |____|   \______  /\___|_  /   \______  /___|\___  /       \___/\________|    \___/   |___| .3
 
 var code = '<div id="fxctrlout">\n';
 code += '<h1 class="fxhead">Output fx</h1>\n';
@@ -283,8 +283,8 @@ code += '<option value="qvga">QVGA</option>\n';
 code += '<option value="vga">VGA</option>\n';
 code += '<option value="svga">SVGA</option>\n';
 code += '<option value="xga">XGA</option>\n';
-code += '</select><small id="status"></small></div><button id="panic">Panic!</button>\n';
-code += '<br><button id="startaudio"></button>\n';
+code += '</select><small id="status"></small></div><button id="panic">Panic!</button><button id="rdmfx">FX_rdm</button><select id="randomfxforce" style="position:relative;top:-5px;"><option value="1">1</option><option value="9">1</option><option value="8">2</option><option value="7">3</option><option value="6">4</option><option value="5">5</option><option value="4">6</option><option value="3">7</option><option value="2">8</option></select>\n';
+code += '<br><button id="startaudio"></button><button id="record" style="top:2px;">REC</button><button id="recstop" style="top:2px;">STOP</button><select id="recformat" style="position:relative;top:2px;"><option value="0">WebM</option><option value="1">GIF</option></select>\n';
 //code += '<button id="gifrec"></button><br>\n';
 code += '\n';
 
@@ -296,210 +296,15 @@ code += '<button id="ennablemidi"></button>\n';
 code += '<button id="midilearn"></button>\n';
 code += '<button id="savemidisetup"></button>\n';
 code += '<button id="loadmidisetup"></button>\n';
+code += '<button id="openvideopong">SEARCH VIDEOPONG.NET</button><button id="remotegif">LOAD A REMOTE GIF</button>\n';
 code += '</div> </div>\n';
-code += '<div id="messagebox"><p>WELCOME TO GLITCH GIF VJ 0.8 BETA</p></div>\n';
+code += '<div id="messagebox"><p>WELCOME TO GLITCH GIF VJ 1.3.1</p></div>\n';
 //code += '<div id="outputrecgif"></div>\n';
 code += '<ul id="bankselector" class="banks">&nbsp;&nbsp;   BANK <li data-bank="bank-1" class="selected">1</li><li data-bank="bank-2">2</li><li data-bank="bank-3">3</li></ul>\n';
-code += '<div class="bank hidden" id="bank-3">\n';
-code += '<div class="source_block" id="source_W">\n';
-code += '<h1 class="head">W\n';
-code += '<select>\n';
-code += '<option value="L1">layer 1</option>\n';
-code += '<option value="L2">layer 2</option>\n';
-code += '</select>\n';
-code += '<form>\n';
-code += '<div class="upload">\n';
-code += '<input data-layer="W" type="file" class="img_input" name="loadimage_W" id="inputimage_W" class="imloader">\n';
-code += '</div>\n';
-code += '</form></h1>\n';
-code += '<div class="imsources" id="imsource_W"></div>\n';
-code += '<div><select class="src_ctrl_select" id="src_ctrl_W"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
-code += '<input class="speed_sldr potard" type="range"  id="speedW" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_W" min="-100" max="100" value="1"step="1"> </div>\n';
-
-code += '</div>\n';
-code += '<div class="source_block" id="source_X">\n';
-code += '<h1 class="head">X\n';
-code += '<select>\n';
-code += '<option value="L1">layer 1</option>\n';
-code += '<option value="L2">layer 2</option>\n';
-code += '</select><form>\n';
-code += '<div class="upload">\n';
-code += '<input data-layer="X" type="file" class="img_input" name="loadimage_X" id="inputimage_X" class="imloader">\n';
-code += '</div>\n';
-code += '</form></h1>\n';
-code += '<div class="imsources" id="imsource_X"></div>\n';
-code += '<div><select class="src_ctrl_select" id="src_ctrl_X"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
-code += '<input class="speed_sldr potard" type="range"  id="speedX" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_X" min="-100" max="100" value="1"step="1"></div>\n';
-
-code += '</div>\n';
-code += '<div class="source_block" id="source_C">\n';
-code += '<h1 class="head">C\n';
-code += '<select>\n';
-code += '<option value="L1">layer 1</option>\n';
-code += '<option value="L2">layer 2</option>\n';
-code += '</select>\n';
-code += '<form>\n';
-code += '<div class="upload">\n';
-code += '<input data-layer="C" type="file" class="img_input" name="loadimage_C" id="inputimage_C" class="imloader">\n';
-code += '</div>\n';
-code += '</form></h1>\n';
-code += '<div class="imsources" id="imsource_C"></div>\n';
-code += '<div><select class="src_ctrl_select" id="src_ctrl_C"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
-code += '<input class="speed_sldr potard" type="range"  id="speedC" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_C" min="-100" max="100" value="1"step="1"> </div>\n';
-
-code += '</div>\n';
-code += '<div class="source_block" id="source_V">\n';
-code += '<h1 class="head">V\n';
-code += '<select>\n';
-code += '<option value="L1">layer 1</option>\n';
-code += '<option value="L2">layer 2</option>\n';
-code += '</select>\n';
-code += '<form>\n';
-code += '<div class="upload">\n';
-code += '<input data-layer="V" type="file" class="img_input" name="loadimage_V" id="inputimage_V" class="imloader">\n';
-code += '</div>\n';
-code += '</form></h1>\n';
-code += '<div class="imsources" id="imsource_V"></div>\n';
-code += '<div><select class="src_ctrl_select" id="src_ctrl_V"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
-code += '<input class="speed_sldr potard" type="range"  id="speedV" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_V" min="-100" max="100" value="1"step="1"> </div>\n';
-
-code += '</div>\n';
-code += '<div class="source_block" id="source_B">\n';
-code += '<h1 class="head">B\n';
-code += '<select>\n';
-code += '<option value="L1">layer 1</option>\n';
-code += '<option value="L2">layer 2</option>\n';
-code += '</select>\n';
-code += '<form>\n';
-code += '<div class="upload">\n';
-code += '<input data-layer="B" type="file" class="img_input" name="loadimage_B" id="inputimage_B" class="imloader">\n';
-code += '</div>\n';
-code += '</form>\n';
-code += '</h1>\n';
-code += '<div class="imsources" id="imsource_B"></div>\n';
-code += '<div><select class="src_ctrl_select" id="src_ctrl_B"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
-code += '<input class="speed_sldr potard" type="range"  id="speedB" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_B" min="-100" max="100" value="1"step="1"> </div>\n';
-
-code += '</div>\n';
-code += '<div class="source_block" id="source_N">\n';
-code += '<h1 class="head">N\n';
-code += '<select>\n';
-code += '<option value="L1">layer 1</option>\n';
-code += '<option value="L2">layer 2</option>\n';
-code += '</select>\n';
-code += '<form>\n';
-code += '<div class="upload">\n';
-code += '<input data-layer="N" type="file" class="img_input" name="loadimage_N" id="inputimage_N" class="imloader">\n';
-code += '</div>\n';
-code += '</form></h1>\n';
-code += '<div class="imsources" id="imsource_N"></div>\n';
-code += '<div><select class="src_ctrl_select" id="src_ctrl_N"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
-code += '<input class="speed_sldr potard" type="range"  id="speedN" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_N" min="-100" max="100" value="1"step="1"> </div>\n';
-
-code += '</div>\n';
-code += '</div>\n';
-code += '<div class="bank hidden" id="bank-2">\n';
-code += '<div class="source_block" id="source_Q">\n';
-code += '<h1 class="head">Q\n';
-code += '<select>\n';
-code += '<option value="L1">layer 1</option>\n';
-code += '<option value="L2">layer 2</option>\n';
-code += '</select>\n';
-code += '<form>\n';
-code += '<div class="upload">\n';
-code += '<input data-layer="Q" type="file" class="img_input" name="loadimage_A" id="inputimage_Q" class="imloader">\n';
-code += '</div>\n';
-code += '</form></h1>\n';
-code += '<div class="imsources" id="imsource_Q"></div>\n';
-code += '<div><select class="src_ctrl_select" id="src_ctrl_Q"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
-code += '<input class="speed_sldr potard" type="range"  id="speedQ" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_Q" min="-100" max="100" value="1"step="1"> </div>\n';
-
-code += '</div>\n';
-code += '<div class="source_block" id="source_S">\n';
-code += '<h1 class="head">S\n';
-code += '<select>\n';
-code += '<option value="L1">layer 1</option>\n';
-code += '<option value="L2">layer 2</option>\n';
-code += '</select><form>\n';
-code += '<div class="upload">\n';
-code += '<input data-layer="S" type="file" class="img_input" name="loadimage_S" id="inputimage_S" class="imloader">\n';
-code += '</div>\n';
-code += '</form></h1>\n';
-code += '<div class="imsources" id="imsource_S"></div>\n';
-code += '<div><select class="src_ctrl_select" id="src_ctrl_S"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
-code += '<input class="speed_sldr potard" type="range"  id="speedS" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_S" min="-100" max="100" value="1"step="1"> </div>\n';
-
-code += '</div>\n';
-code += '<div class="source_block" id="source_D">\n';
-code += '<h1 class="head">D\n';
-code += '<select>\n';
-code += '<option value="L1">layer 1</option>\n';
-code += '<option value="L2">layer 2</option>\n';
-code += '</select>\n';
-code += '<form>\n';
-code += '<div class="upload">\n';
-code += '<input data-layer="D" type="file" class="img_input" name="loadimage_D" id="inputimage_D" class="imloader">\n';
-code += '</div>\n';
-code += '</form></h1>\n';
-code += '<div class="imsources" id="imsource_D"></div>\n';
-code += '<div><select class="src_ctrl_select" id="src_ctrl_D"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
-code += '<input class="speed_sldr potard" type="range"  id="speedD" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_D" min="-100" max="100" value="1"step="1"> </div>\n';
-
-code += '</div>\n';
-code += '<div class="source_block" id="source_F">\n';
-code += '<h1 class="head">F\n';
-code += '<select>\n';
-code += '<option value="L1">layer 1</option>\n';
-code += '<option value="L2">layer 2</option>\n';
-code += '</select>\n';
-code += '<form>\n';
-code += '<div class="upload">\n';
-code += '<input data-layer="F" type="file" class="img_input" name="loadimage_F" id="inputimage_F" class="imloader">\n';
-code += '</div>\n';
-code += '</form></h1>\n';
-code += '<div class="imsources" id="imsource_F"></div>\n';
-code += '<div><select class="src_ctrl_select" id="src_ctrl_F"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
-code += '<input class="speed_sldr potard" type="range"  id="speedF" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_F" min="-100" max="100" value="1"step="1"> </div>\n';
-
-code += '</div>\n';
-code += '<div class="source_block" id="source_G">\n';
-code += '<h1 class="head">G\n';
-code += '<select>\n';
-code += '<option value="L1">layer 1</option>\n';
-code += '<option value="L2">layer 2</option>\n';
-code += '</select>\n';
-code += '<form>\n';
-code += '<div class="upload">\n';
-code += '<input data-layer="G" type="file" class="img_input" name="loadimage_G" id="inputimage_G" class="imloader">\n';
-code += '</div>\n';
-code += '</form>\n';
-code += '</h1>\n';
-code += '<div class="imsources" id="imsource_G"></div>\n';
-code += '<div><select class="src_ctrl_select" id="src_ctrl_G"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
-code += '<input class="speed_sldr potard" type="range"  id="speedG" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_G" min="-100" max="100" value="1"step="1"> </div>\n';
-
-code += '</div>\n';
-code += '<div class="source_block" id="source_H">\n';
-code += '<h1 class="head">H\n';
-code += '<select>\n';
-code += '<option value="L1">layer 1</option>\n';
-code += '<option value="L2">layer 2</option>\n';
-code += '</select>\n';
-code += '<form>\n';
-code += '<div class="upload">\n';
-code += '<input data-layer="H" type="file" class="img_input" name="loadimage_H" id="inputimage_H" class="imloader">\n';
-code += '</div>\n';
-code += '</form></h1>\n';
-code += '<div class="imsources" id="imsource_H"></div>\n';
-code += '<div><select class="src_ctrl_select" id="src_ctrl_H"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
-code += '<input class="speed_sldr potard" type="range"  id="speedH" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_H" min="-100" max="100" value="1"step="1"> </div>\n';
-
-code += '</div>\n';
-code += '</div>\n';
 code += '<div class="bank selected-bank" id="bank-1">\n';
 code += '<div class="source_block" id="source_A">\n';
-code += '<h1 class="head">A\n';
-code += '<select>\n';
+code += '<h1 class="head"><span id="bk_A" class="assign-note" data-note="">A';
+code += '</span><select>\n';
 code += '<option value="L1">layer 1</option>\n';
 code += '<option value="L2">layer 2</option>\n';
 code += '</select>\n';
@@ -514,8 +319,8 @@ code += '<input class="speed_sldr potard" type="range"  id="speedA" min="0" max=
 code += '</div>\n';
 
 code += '<div class="source_block" id="source_Z">\n';
-code += '<h1 class="head">Z\n';
-code += '<select>\n';
+code += '<h1 class="head"><span id="bk_Z" class="assign-note" data-note="">Z';
+code += '</span><select>\n';
 code += '<option value="L1">layer 1</option>\n';
 code += '<option value="L2">layer 2</option>\n';
 code += '</select><form>\n';
@@ -529,8 +334,8 @@ code += '<input class="speed_sldr potard" type="range"  id="speedZ" min="0" max=
 
 code += '</div>\n';
 code += '<div class="source_block" id="source_E">\n';
-code += '<h1 class="head">E\n';
-code += '<select>\n';
+code += '<h1 class="head"><span id="bk_E" class="assign-note" data-note="">E';
+code += '</span><select>\n';
 code += '<option value="L1">layer 1</option>\n';
 code += '<option value="L2">layer 2</option>\n';
 code += '</select>\n';
@@ -545,8 +350,8 @@ code += '<input class="speed_sldr potard" type="range"  id="speedE" min="0" max=
 
 code += '</div>\n';
 code += '<div class="source_block" id="source_R">\n';
-code += '<h1 class="head">R\n';
-code += '<select>\n';
+code += '<h1 class="head"><span id="bk_R" class="assign-note" data-note="">R';
+code += '</span><select>\n';
 code += '<option value="L1">layer 1</option>\n';
 code += '<option value="L2">layer 2</option>\n';
 code += '</select>\n';
@@ -561,8 +366,8 @@ code += '<input class="speed_sldr potard" type="range"  id="speedR" min="0" max=
 
 code += '</div>\n';
 code += '<div class="source_block" id="source_T">\n';
-code += '<h1 class="head">T\n';
-code += '<select>\n';
+code += '<h1 class="head"><span id="bk_T" class="assign-note" data-note="">T';
+code += '</span><select>\n';
 code += '<option value="L1">layer 1</option>\n';
 code += '<option value="L2">layer 2</option>\n';
 code += '</select>\n';
@@ -578,8 +383,8 @@ code += '<input class="speed_sldr potard" type="range"  id="speedT" min="0" max=
 
 code += '</div>\n';
 code += '<div class="source_block" id="source_Y">\n';
-code += '<h1 class="head">Y\n';
-code += '<select>\n';
+code += '<h1 class="head"><span id="bk_Y" class="assign-note" data-note="">Y';
+code += '</span><select>\n';
 code += '<option value="L1">layer 1</option>\n';
 code += '<option value="L2">layer 2</option>\n';
 code += '</select>\n';
@@ -594,6 +399,206 @@ code += '<input class="speed_sldr potard" type="range"  id="speedY" min="0" max=
 
 code += '</div>\n';
 code += '</div>\n';
+
+
+
+code += '<div class="bank hidden" id="bank-2">\n';
+code += '<div class="source_block" id="source_Q">\n';
+code += '<h1 class="head"><span id="bk_Q" class="assign-note" data-note="">Q';
+code += '</span><select>\n';
+code += '<option value="L1">layer 1</option>\n';
+code += '<option value="L2">layer 2</option>\n';
+code += '</select>\n';
+code += '<form>\n';
+code += '<div class="upload">\n';
+code += '<input data-layer="Q" type="file" class="img_input" name="loadimage_A" id="inputimage_Q" class="imloader">\n';
+code += '</div>\n';
+code += '</form></h1>\n';
+code += '<div class="imsources" id="imsource_Q"></div>\n';
+code += '<div><select class="src_ctrl_select" id="src_ctrl_Q"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
+code += '<input class="speed_sldr potard" type="range"  id="speedQ" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_Q" min="-100" max="100" value="1"step="1"> </div>\n';
+
+code += '</div>\n';
+code += '<div class="source_block" id="source_S">\n';
+code += '<h1 class="head"><span id="bk_S" class="assign-note" data-note="">S';
+code += '</span><select>\n';
+code += '<option value="L1">layer 1</option>\n';
+code += '<option value="L2">layer 2</option>\n';
+code += '</select><form>\n';
+code += '<div class="upload">\n';
+code += '<input data-layer="S" type="file" class="img_input" name="loadimage_S" id="inputimage_S" class="imloader">\n';
+code += '</div>\n';
+code += '</form></h1>\n';
+code += '<div class="imsources" id="imsource_S"></div>\n';
+code += '<div><select class="src_ctrl_select" id="src_ctrl_S"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
+code += '<input class="speed_sldr potard" type="range"  id="speedS" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_S" min="-100" max="100" value="1"step="1"> </div>\n';
+
+code += '</div>\n';
+code += '<div class="source_block" id="source_D">\n';
+code += '<h1 class="head"><span id="bk_D" class="assign-note" data-note="">D';
+code += '</span><select>\n';
+code += '<option value="L1">layer 1</option>\n';
+code += '<option value="L2">layer 2</option>\n';
+code += '</select>\n';
+code += '<form>\n';
+code += '<div class="upload">\n';
+code += '<input data-layer="D" type="file" class="img_input" name="loadimage_D" id="inputimage_D" class="imloader">\n';
+code += '</div>\n';
+code += '</form></h1>\n';
+code += '<div class="imsources" id="imsource_D"></div>\n';
+code += '<div><select class="src_ctrl_select" id="src_ctrl_D"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
+code += '<input class="speed_sldr potard" type="range"  id="speedD" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_D" min="-100" max="100" value="1"step="1"> </div>\n';
+
+code += '</div>\n';
+code += '<div class="source_block" id="source_F">\n';
+code += '<h1 class="head"><span id="bk_F" class="assign-note" data-note="">F';
+code += '</span><select>\n';
+code += '<option value="L1">layer 1</option>\n';
+code += '<option value="L2">layer 2</option>\n';
+code += '</select>\n';
+code += '<form>\n';
+code += '<div class="upload">\n';
+code += '<input data-layer="F" type="file" class="img_input" name="loadimage_F" id="inputimage_F" class="imloader">\n';
+code += '</div>\n';
+code += '</form></h1>\n';
+code += '<div class="imsources" id="imsource_F"></div>\n';
+code += '<div><select class="src_ctrl_select" id="src_ctrl_F"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
+code += '<input class="speed_sldr potard" type="range"  id="speedF" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_F" min="-100" max="100" value="1"step="1"> </div>\n';
+
+code += '</div>\n';
+code += '<div class="source_block" id="source_G">\n';
+code += '<h1 class="head"><span id="bk_G" class="assign-note" data-note="">G';
+code += '</span><select>\n';
+code += '<option value="L1">layer 1</option>\n';
+code += '<option value="L2">layer 2</option>\n';
+code += '</select>\n';
+code += '<form>\n';
+code += '<div class="upload">\n';
+code += '<input data-layer="G" type="file" class="img_input" name="loadimage_G" id="inputimage_G" class="imloader">\n';
+code += '</div>\n';
+code += '</form>\n';
+code += '</h1>\n';
+code += '<div class="imsources" id="imsource_G"></div>\n';
+code += '<div><select class="src_ctrl_select" id="src_ctrl_G"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
+code += '<input class="speed_sldr potard" type="range"  id="speedG" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_G" min="-100" max="100" value="1"step="1"> </div>\n';
+
+code += '</div>\n';
+code += '<div class="source_block" id="source_H">\n';
+code += '<h1 class="head"><span id="bk_H" class="assign-note" data-note="">H';
+code += '</span><select>\n';
+code += '<option value="L1">layer 1</option>\n';
+code += '<option value="L2">layer 2</option>\n';
+code += '</select>\n';
+code += '<form>\n';
+code += '<div class="upload">\n';
+code += '<input data-layer="H" type="file" class="img_input" name="loadimage_H" id="inputimage_H" class="imloader">\n';
+code += '</div>\n';
+code += '</form></h1>\n';
+code += '<div class="imsources" id="imsource_H"></div>\n';
+code += '<div><select class="src_ctrl_select" id="src_ctrl_H"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
+code += '<input class="speed_sldr potard" type="range"  id="speedH" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_H" min="-100" max="100" value="1"step="1"> </div>\n';
+
+code += '</div>\n';
+code += '</div>\n';
+
+code += '<div class="bank hidden" id="bank-3">\n';
+code += '<div class="source_block" id="source_W">\n';
+code += '<h1 class="head"><span id="bk_W" class="assign-note" data-note="">W';
+code += '</span><select>\n';
+code += '<option value="L1">layer 1</option>\n';
+code += '<option value="L2">layer 2</option>\n';
+code += '</select>\n';
+code += '<form>\n';
+code += '<div class="upload">\n';
+code += '<input data-layer="W" type="file" class="img_input" name="loadimage_W" id="inputimage_W" class="imloader">\n';
+code += '</div>\n';
+code += '</form></h1>\n';
+code += '<div class="imsources" id="imsource_W"></div>\n';
+code += '<div><select class="src_ctrl_select" id="src_ctrl_W"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
+code += '<input class="speed_sldr potard" type="range"  id="speedW" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_W" min="-100" max="100" value="1"step="1"> </div>\n';
+
+code += '</div>\n';
+code += '<div class="source_block" id="source_X">\n';
+code += '<h1 class="head"><span id="bk_X" class="assign-note" data-note="">X';
+code += '</span><select>\n';
+code += '<option value="L1">layer 1</option>\n';
+code += '<option value="L2">layer 2</option>\n';
+code += '</select><form>\n';
+code += '<div class="upload">\n';
+code += '<input data-layer="X" type="file" class="img_input" name="loadimage_X" id="inputimage_X" class="imloader">\n';
+code += '</div>\n';
+code += '</form></h1>\n';
+code += '<div class="imsources" id="imsource_X"></div>\n';
+code += '<div><select class="src_ctrl_select" id="src_ctrl_X"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
+code += '<input class="speed_sldr potard" type="range"  id="speedX" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_X" min="-100" max="100" value="1"step="1"></div>\n';
+
+code += '</div>\n';
+code += '<div class="source_block" id="source_C">\n';
+code += '<h1 class="head"><span id="bk_C" class="assign-note" data-note="">C';
+code += '</span><select>\n';
+code += '<option value="L1">layer 1</option>\n';
+code += '<option value="L2">layer 2</option>\n';
+code += '</select>\n';
+code += '<form>\n';
+code += '<div class="upload">\n';
+code += '<input data-layer="C" type="file" class="img_input" name="loadimage_C" id="inputimage_C" class="imloader">\n';
+code += '</div>\n';
+code += '</form></h1>\n';
+code += '<div class="imsources" id="imsource_C"></div>\n';
+code += '<div><select class="src_ctrl_select" id="src_ctrl_C"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
+code += '<input class="speed_sldr potard" type="range"  id="speedC" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_C" min="-100" max="100" value="1"step="1"> </div>\n';
+
+code += '</div>\n';
+code += '<div class="source_block" id="source_V">\n';
+code += '<h1 class="head"><span id="bk_V" class="assign-note" data-note="">V';
+code += '</span><select>\n';
+code += '<option value="L1">layer 1</option>\n';
+code += '<option value="L2">layer 2</option>\n';
+code += '</select>\n';
+code += '<form>\n';
+code += '<div class="upload">\n';
+code += '<input data-layer="V" type="file" class="img_input" name="loadimage_V" id="inputimage_V" class="imloader">\n';
+code += '</div>\n';
+code += '</form></h1>\n';
+code += '<div class="imsources" id="imsource_V"></div>\n';
+code += '<div><select class="src_ctrl_select" id="src_ctrl_V"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
+code += '<input class="speed_sldr potard" type="range"  id="speedV" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_V" min="-100" max="100" value="1"step="1"> </div>\n';
+
+code += '</div>\n';
+code += '<div class="source_block" id="source_B">\n';
+code += '<h1 class="head"><span id="bk_B" class="assign-note" data-note="">B';
+code += '</span><select>\n';
+code += '<option value="L1">layer 1</option>\n';
+code += '<option value="L2">layer 2</option>\n';
+code += '</select>\n';
+code += '<form>\n';
+code += '<div class="upload">\n';
+code += '<input data-layer="B" type="file" class="img_input" name="loadimage_B" id="inputimage_B" class="imloader">\n';
+code += '</div>\n';
+code += '</form>\n';
+code += '</h1>\n';
+code += '<div class="imsources" id="imsource_B"></div>\n';
+code += '<div><select class="src_ctrl_select" id="src_ctrl_B"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
+code += '<input class="speed_sldr potard" type="range"  id="speedB" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_B" min="-100" max="100" value="1"step="1"> </div>\n';
+
+code += '</div>\n';
+code += '<div class="source_block" id="source_N">\n';
+code += '<h1 class="head"><span id="bk_N" class="assign-note" data-note="">N';
+code += '<select>\n';
+code += '<option value="L1">layer 1</option>\n';
+code += '<option value="L2">layer 2</option>\n';
+code += '</select>\n';
+code += '<form>\n';
+code += '<div class="upload">\n';
+code += '<input data-layer="N" type="file" class="img_input" name="loadimage_N" id="inputimage_N" class="imloader">\n';
+code += '</div>\n';
+code += '</form></h1>\n';
+code += '<div class="imsources" id="imsource_N"></div>\n';
+code += '<div><select class="src_ctrl_select" class="src_ctrl_select" id="src_ctrl_N"><option>normal</option><option>control_speed</option><option>random</option></select>\n';
+code += '<input class="speed_sldr potard" type="range"  id="speedN" min="0" max="300" value="1"step="1" ><input class="speed_sldr potard double" type="range"  id="ctrl_speed_N" min="-100" max="100" value="1"step="1"> </div>\n';
+
+code += '</div>\n';
+code += '</div>\n';
 code +='<div id="generators">Generator<br> & more fx</div>'
 code += '<div id="blockopacity">Opacity:<br><input class="potard" type="range" id="speopacity" min="0" max="1" step="0.01"></div><div id="blockcompmode">Compositing mode:<br><input class="potard" type="range" id="specompmode" min="0" max="28"></div><div id="specialsources">';
 code +='<div class="spe_tab" id="spetab_1">';
@@ -605,7 +610,7 @@ code +='<div class="ctrl_spe">speed:<input class="potard" type="range" id="txtsp
 //code +=
 //code +=
 //code +=
-code +='<input type="text" class="txtinput" id="txtsource" value="GLITCH GIF STUDIO /// A 100% HTML5 JAVASCRIPT VJ SOFTWARE THAT WORKS IN YOUR BROWSER /// AZOPCORP. 2016 /// HTTPS://AZOPCORP.COM"><input type="text" id="fontcolor" value="#000000"><button id="txtgo">Go</button><button id="stoptxtclear">stop</button></div></div>';
+code +='<input type="text" class="txtinput" id="txtsource" value="GLITCH GIF VJ /// A 100% HTML5 JAVASCRIPT VJ SOFTWARE THAT WORKS IN YOUR BROWSER /// AZOPCORP. 2016 /// HTTPS://AZOPCORP.COM"><input type="text" id="fontcolor" value="#000000"><button id="txtgo">Go</button><button id="stoptxtclear">stop</button></div></div>';
 code +='<div class="spe_tab" id="spetab_2"><canvas id="vgacanvas" style="width:200px;height:150px;display:inline-block;border:1px solid lime;"></canvas><div class="ctrl_spe"><input class="potard" id="vgabitmap"  class="potard" type="range" min="0" max="4095"><input class="potard" id="vgascale"  class="potard" type="range" min="1" max="80"><input class="potard" id="vgaR"  class="potard" type="range" min="0" max="255"><input class="potard" id="vgaG"  class="potard" type="range" min="0" max="255"><input class="potard" id="vgaB"  class="potard" type="range" min="0" max="255"><input class="potard" id="vgaA"  class="potard" type="range" min="0" max="255"><br><br><button id="vgardm">random</button><br><button id="vgago">Go</button></div></div>';
 code +='<div class="spe_tab" id="spetab_3"><canvas id="b64canvas" style="width:200px;height:150px;display:inline-block;border:1px solid lime;"></canvas><div class="ctrl_spe"><input class="potard" type="range" id="glitch64force" min="0" max="4" step="1"><br><br><select id="glitchsrc"><option value="layer1">layer1</option><option value="layer2">layer2</option></select><br><br><button id="glitchgo">Go</button></div></div>\n';
 //code +=audio
@@ -620,17 +625,19 @@ code += '<ul id="spe_menu"><li id="spe_1" data-order="txt"></li><li id="spe_2" d
 code += '</ul>';
 code += '</div>';
 code += '</div>';
-
+code +='	<div id="seqbox">  <div id="seqcontrols">    <button id="start">Start</button><button id="stop">Stop</button>   <input type="text" id="bpm" class="num"value="140"><select id="beatrez" style="position:relative;top:-5px;"><option value="1">--</option><option value="4">4</option><option value="8">8</option><option value="16">16</option></select><button id="tap">TAP</button> <button id="randomise">Randomise</button> </div>  <div id="seqsteps">    <div class="step"><select id="step1"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>    <div class="step"><select id="step2"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>    <div class="step"><select id="step3"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>    <div class="step"><select id="step4"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>    <div class="step"><select id="step5"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>    <div class="step"><select id="step6"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>    <div class="step"><select id="step7"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>    <div class="step"><select id="step8"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>           <div class="step"><select id="step9"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>    <div class="step"><select id="step10"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>    <div class="step"><select id="step11"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>    <div class="step"><select id="step12"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>    <div class="step"><select id="step13"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>    <div class="step"><select id="step14"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>    <div class="step"><select id="step15"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>    <div class="step"><select id="step16"><option>--</option><option>A</option><option>Z</option><option>E</option><option>R</option><option>T</option><option>Y</option><option>Q</option><option>S</option><option>D</option><option>F</option><option>G</option><option>H</option>      <option>W</option><option>X</option><option>C</option><option>V</option><option>B</option><option>N</option></select></div>  </div></div>';
 
 code += '<div id="logo"><pre>';
-code += '    ________.____    .______________________   ___ ___     ________.______________ ____   ____  ____. ____   ________    _______<br>';
-code += '   /  _____/|    |   |   \\__    ___|_   ___ \\ /   |   \\   /  _____/|   \\_   _____/ \\   \\ /   / |    | \\   \\ /   /_   |   \\   _  \\<br>';
-code += '  /   \\  ___|    |   |   | |    |  /    \\  \\//    ~    \\ /   \\  ___|   ||    __)    \\   Y   /  |    |  \\   Y   / |   |   /  /_\\  \\<br>';
-code += '  \\    \\_\\  \\    |___|   | |    |  \\     \\___\\    Y    / \\    \\_\\  \\   ||     \\      \\     /\\__|    |   \\     /  |   |   \\  \\_/   \\<br>';
-code += '   \\________/________\\___| |____|   \\________/\\___|___/   \\________/___|\\_____/       \\___/\\________|    \\___/   |___| /\\ \\_______/<br>';
-code += '</div></pre>';
+code += '    ________.____    .______________________   ___ ___     ________.______________ ____   ____  ____.<br>';
+
+code += '   /  _____/|    |   |   \\__    ___|_   ___ \\ /   |   \\   /  _____/|   \\_   _____/ \\   \\ /   / |    |<br>';
+code += '  /   \\  ___|    |   |   | |    |  /    \\  \\//    ~    \\ /   \\  ___|   ||    __)    \\   Y   /  |    |<br>';
+code += '  \\    \\_\\  \\    |___|   | |    |  \\     \\___\\    Y    / \\    \\_\\  \\   ||     \\      \\     /\\__|    |<br>';
+code += '   \\________/________\\___| |____|   \\________/\\___|___/   \\________/___|\\_____/       \\___/\\________|<br>';
+code += '</pre></div>';
 
 code += '<div id="morestuff">';
 code += '<div id="aboutbox">GLITCH GIF VJ is a 100% HTML5/JAVASCRIPT VJ software that run into your WEB Browser. <br> Use chrome for better perf and midi control<br>If you like this software and use it please share it. Hit me if you have ideas to make it better.<br>I\'m also open to collab and for hire so don\'t hesitate to <a href="https://azopcorp.com/contact">contact me.</a>   <br> Made With love by AZOPCORP. 2016. <br>THIS SOFTWARE IS PROVIDED "AS IS" AND COMES WITH ABSOLUTLY NO WARRANTIES!</div>';
-code += '<input type="text" id="midiarrayinput" placeholder="external midi map"></div>';
+code += '<input type="text" id="midiarrayinput" placeholder="external midi map"><br><br><div id="link" ><a href="https://azopcorp.com/serve/html/ggvmanual">USER MANUAL</a><br><a href="https://www.youtube.com/watch?v=Cumk8Jp6BNQ">VIDEO TUTORIAL</a><br><a href="https://github.com/AZOPCORP/GLITCHGIFVJ">SOURCE CODE</a></div> </div>';
+
 $('body').append(code);

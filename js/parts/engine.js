@@ -1,15 +1,15 @@
-//    ________.____    .______________________   ___ ___     ________.______________ ____   ____  ____. ____   ________    _______
-//   /  _____/|    |   |   \__    ___|_   ___ \ /   |   \   /  _____/|   \_   _____/ \   \ /   / |    | \   \ /   /_   |   \   _  \
-//  /   \  ___|    |   |   | |    |  /    \  \//    ~    \ /   \  ___|   ||    __)    \   Y   /  |    |  \   Y   / |   |   /  /_\  \
-//  \    \_\  \    |___|   | |    |  \     \___\    Y    / \    \_\  \   ||     \      \     /\__|    |   \     /  |   |   \  \_/   \
-//   \______  /_______ \___| |____|   \______  /\___|_  /   \______  /___|\___  /       \___/\________|    \___/   |___| /\ \_____  /
+//    ________.____    .______________________   ___ ___     ________.______________ ____   ____  ____. ____   ________
+//   /  _____/|    |   |   \__    ___|_   ___ \ /   |   \   /  _____/|   \_   _____/ \   \ /   / |    | \   \ /   /_   |
+//  /   \  ___|    |   |   | |    |  /    \  \//    ~    \ /   \  ___|   ||    __)    \   Y   /  |    |  \   Y   / |   |
+//  \    \_\  \    |___|   | |    |  \     \___\    Y    / \    \_\  \   ||     \      \     /\__|    |   \     /  |   |
+//   \______  /_______ \___| |____|   \______  /\___|_  /   \______  /___|\___  /       \___/\________|    \___/   |___|.3.1
 
 var txton=false;
 var oscon=false;
 var glitchon=false;
 var vgaon=false;
 var videosrc=false;
-
+var keyb_def_map =[60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77];
 var previewcanvas = document.getElementById('preview_canvas');
 var previewctx = previewcanvas.getContext('2d');
 var canvas_layer_1 = document.getElementById('canvas_layer_1');
@@ -36,7 +36,9 @@ var temp = document.createElement('canvas');
 var tempctx = temp.getContext('2d');
 var grabframe = false;
 
-
+var recorder = new CanvasRecorder(window.previewcanvas, {
+    disableLogs: false
+});
 
 
 
@@ -63,6 +65,25 @@ $('#vgaA').val(255);
 $('#txtmovespeed').val(10);
 $('#fontsize').val(40);
 
+}
+//ENCODE 64
+function encode64(input) {
+	var output = "", i = 0, l = input.length,
+	key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+	chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+	while (i < l) {
+		chr1 = input.charCodeAt(i++);
+		chr2 = input.charCodeAt(i++);
+		chr3 = input.charCodeAt(i++);
+		enc1 = chr1 >> 2;
+		enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+		enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+		enc4 = chr3 & 63;
+		if (isNaN(chr2)) enc3 = enc4 = 64;
+		else if (isNaN(chr3)) enc4 = 64;
+		output = output + key.charAt(enc1) + key.charAt(enc2) + key.charAt(enc3) + key.charAt(enc4);
+	}
+	return output;
 }
 
 
@@ -411,7 +432,9 @@ previewctx.drawImage(spesrccanvas, 0, 0, W, H);
 //labirynt(previewcanvas,previewctx,10);
   }
 
-
+  if(gifrecording){
+    encoder.addFrame(previewctx);
+  }
   outputAnim = requestAnimationFrame(animoutput);
 }
 
@@ -576,6 +599,8 @@ function animlayer2()
 
 function triggA()
 {
+
+  if(typeof sourceA !== "undefined"){
 	sourceA.move_to(0);
 	sourceA.play;
 	var srcbox = document.getElementById("imsource_A");
@@ -596,11 +621,12 @@ function triggA()
 		cancelAnimationFrame(layerAnim2);
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
-
+}
 }
 
 function triggZ()
 {
+  if(typeof sourceZ !== "undefined"){
 	sourceZ.move_to(0);
 	sourceZ.play;
 	var srcbox = document.getElementById("imsource_Z");
@@ -620,12 +646,12 @@ function triggZ()
 		cancelAnimationFrame(layerAnim2);
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
-
+}
 }
 
 function triggE()
 {
-
+if(typeof sourceE !== "undefined"){
 	sourceE.move_to(0);
 	sourceE.play;
 	var srcbox = document.getElementById("imsource_E");
@@ -645,11 +671,12 @@ function triggE()
 		cancelAnimationFrame(layerAnim2);
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
-
+}
 }
 
 function triggR()
 {
+  if(typeof sourceR !== "undefined"){
 	sourceR.move_to(0);
 	sourceR.play;
 	var srcbox = document.getElementById("imsource_R");
@@ -670,9 +697,11 @@ function triggR()
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
 }
+}
 
 function triggT()
 {
+  if(typeof sourceT !== "undefined"){
 	sourceT.move_to(0);
 	sourceT.play;
 	var srcbox = document.getElementById("imsource_T");
@@ -692,11 +721,12 @@ function triggT()
 		cancelAnimationFrame(layerAnim2);
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
-
+}
 }
 
 function triggY()
 {
+  if(typeof sourceY !== "undefined"){
 	sourceY.move_to(0);
 	sourceY.play;
 	var srcbox = document.getElementById("imsource_Y");
@@ -717,9 +747,10 @@ function triggY()
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
 }
-
+}
 function triggQ()
 {
+  if(typeof sourceQ !== "undefined"){
 	sourceQ.move_to(0);
 	sourceQ.play;
 	var srcbox = document.getElementById("imsource_Q");
@@ -740,9 +771,10 @@ function triggQ()
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
 }
-
+}
 function triggS()
 {
+  if(typeof sourceS !== "undefined"){
 	sourceS.move_to(0);
 	sourceS.play;
 	var srcbox = document.getElementById("imsource_S");
@@ -763,9 +795,10 @@ function triggS()
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
 }
-
+}
 function triggD()
 {
+  if(typeof sourceD !== "undefined"){
 	sourceD.move_to(0);
 	sourceD.play;
 	var srcbox = document.getElementById("imsource_D");
@@ -786,9 +819,10 @@ function triggD()
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
 }
-
+}
 function triggF()
 {
+  if(typeof sourceF !== "undefined"){
 	sourceF.move_to(0);
 	sourceF.play;
 	var srcbox = document.getElementById("imsource_F");
@@ -809,9 +843,10 @@ function triggF()
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
 }
-
+}
 function triggG()
 {
+  if(typeof sourceG !== "undefined"){
 	sourceG.move_to(0);
 	sourceG.play;
 	var srcbox = document.getElementById("imsource_G");
@@ -832,8 +867,10 @@ function triggG()
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
 }
+}
 function triggH()
 {
+  if(typeof sourceH !== "undefined"){
 	sourceH.move_to(0);
 	sourceH.play;
 	var srcbox = document.getElementById("imsource_H");
@@ -854,9 +891,9 @@ function triggH()
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
 }
-
+}
 function triggW()
-{
+{ if(typeof sourceW !== "undefined"){
 	sourceW.move_to(0);
 	sourceW.play;
 	var srcbox = document.getElementById("imsource_W");
@@ -877,9 +914,10 @@ function triggW()
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
 }
-
+}
 function triggX()
 {
+  if(typeof sourceX !== "undefined"){
 	sourceX.move_to(0);
 	sourceX.play;
 	var srcbox = document.getElementById("imsource_X");
@@ -901,9 +939,10 @@ function triggX()
 	}
 
 }
-
+}
 function triggC()
 {
+  if(typeof sourceC !== "undefined"){
 	sourceC.move_to(0);
 	sourceC.play;
 	var srcbox = document.getElementById("imsource_C");
@@ -925,9 +964,10 @@ function triggC()
 	}
 
 }
-
+}
 function triggV()
 {
+  if(typeof sourceV !== "undefined"){
 	sourceV.move_to(0);
 	sourceV.play;
 
@@ -949,11 +989,12 @@ function triggV()
 		cancelAnimationFrame(layerAnim2);
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
-
+}
 }
 
 function triggB()
 {
+  if(typeof sourceB !== "undefined"){
 	sourceB.move_to(0);
 	sourceB.play;
 	var srcbox = document.getElementById("imsource_B");
@@ -974,8 +1015,10 @@ function triggB()
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
 }
+}
 function triggN()
 {
+  if(typeof sourceN !== "undefined"){
 	sourceN.move_to(0);
 	sourceN.play;
 	var srcbox = document.getElementById("imsource_N");
@@ -996,7 +1039,7 @@ function triggN()
 		layerAnim2 = requestAnimationFrame(animlayer2);
 	}
 }
-
+}
 ////START AUDIO ENGINE
 
 function getaudio(){
@@ -1057,6 +1100,74 @@ function stopaudio(){
 	gain=null;
 }
 
+///
+function recgif(){
+  $('#messagebox').html('RECORDING AS GIF');
+  $('#record').css({
+    'background-color':'#0F0',
+    'color':'#000'
+  })
+   encoder =null;
+   encoder = new GIFEncoder();
+        encoder.setRepeat(0);
+        encoder.setDelay(0);
+        encoder.start();
+        gifrecording=true;
+}
+
+function savegif(){
+  $('#messagebox').html('STOP ... SAVING GIF');
+  $('#record').css({
+    'background-color':'#030',
+    'color':'#0F0'
+  })
+  gifrecording=false;
+  encoder.finish();
+  var binary_gif = encoder.stream().getData() //notice this is different from the as3gif package!
+  var data_url = 'data:image/gif;base64,'+encode64(binary_gif);
+
+
+
+    window.open(data_url, "_blank")
+
+
+  encoder =null;
+  $('#messagebox').html('GIF SAVED');
+}
+function recaswebm(){
+  $('#messagebox').html('RECORDING AS VIDEO');
+  $('#record').css({
+    'background-color':'#0F0',
+    'color':'#000'
+  })
+
+recorder.record();
+}
+
+function savewebm(){
+  $('#messagebox').html('STOP ... ENCODING VIDEO');
+  $('#record').css({
+    'background-color':'#030',
+    'color':'#0F0'
+  })
+	recorder.stop(function(blob) {
+    var a = document.createElement("a");
+    document.body.appendChild(a);
+    a.style = "display: none";
+	  var filename = prompt("Please name your recording", "Glitch_Gif_Vj_Recording");
+    if (filename != null) {
+      var url = window.URL.createObjectURL(blob);
+      a.href = url;
+
+      a.download = filename+'.webm';
+      a.click();
+      window.URL.revokeObjectURL(url);
+}
+
+
+	});
+
+}
 
 ///SOURCES PLAYBACK MODES this function is quite complex , and i think we can meke it more simple
 
@@ -1154,3 +1265,149 @@ break;
 }
 
 }
+
+function seqloop(){
+    var bpm = $('#bpm').val();
+    var rez = $('#beatrez').val()
+    var time = (1000*60/bpm)/parseInt(rez);
+
+     //$('#monitor').html(position)
+     $(".step").css({"border":"none"})
+     $(".step:nth-child("+(position+1)+")").css({"border":"2px solid lime"})
+
+
+switch ($(".step:nth-child("+(position+1)+") option:selected").text()) {
+  case "A":
+    triggA();
+    break;
+  case "Z":
+    triggZ();
+    break;
+  case "E":
+    triggE();
+    break;
+  case "R":
+    triggR();
+    break;
+  case "T":
+    triggT();
+    break;
+  case "Y":
+    triggY();
+    break;
+  case "Q":
+    triggQ();
+    break;
+  case "S":
+    triggS();
+    break;
+  case "D":
+    triggD();
+    break;
+  case "F":
+    triggF();
+    break;
+  case "G":
+    triggG();
+    break;
+  case "H":
+    triggH();
+    break;
+  case "W":
+    triggW();
+    break;
+  case "X":
+    triggX();
+    break;
+  case "C":
+    triggC();
+    break;
+  case "V":
+    triggV();
+    break;
+  case "B":
+    triggB();
+    break;
+  case "N":
+    triggN();
+    break;
+
+}
+
+
+     setTimeout(function(){
+        if(isplay){
+       position++;
+    if(position>=16){
+      position=0;
+    }
+
+  requestId =  window.requestAnimationFrame(seqloop);
+  }
+     }, time);
+}
+
+
+function start(){
+  $(".step").css({"border":"none"})
+   position=0;
+ if (!seqrequestId) {
+    seqloop();
+ }
+}
+function stop() {
+ if (seqrequestId) {
+    window.cancelAnimationFrame(seqrequestId);
+    requestId = undefined;
+ }
+}
+function seqrandomise() {
+
+		$(".step select").each(function() {
+				var options = $(this).children('option');
+				var random = Math.floor(Math.random() * 16) + 0 ;
+				options.attr('selected', false).eq(random).attr('selected', true);
+		});
+}
+
+function ResetCount()
+  {
+  count = 0;
+  average=0;tap=0;reset=0;
+  }
+
+function TapForBPM(e)
+  {
+
+  timeSeconds = new Date;
+  msecs = timeSeconds.getTime();
+  if ((msecs - msecsPrevious) > 1000 * 5)
+    {
+    count = 0;
+    }
+
+  if (count == 0)
+    {
+
+    msecsFirst = msecs;
+    count = 1;
+    }
+  else
+    {
+    bpmAvg = 60000 * count / (msecs - msecsFirst);
+    average = (Math.round(bpmAvg * 100)) / 100;
+    count++;
+    tap = count;
+      $('#bpm').val(parseInt(average));
+    }
+  msecsPrevious = msecs;
+  return true;
+  }
+
+  function randfx(){
+
+    $('.ctrlblock input[type=range]').each(function(){
+  if(randInt(0,10)>$('#randomfxforce').val()){
+      $(this).val(randInt($(this).prop('min'),$(this).prop('max')));
+  }  })
+  }

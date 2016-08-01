@@ -1,8 +1,8 @@
-//    ________.____    .______________________   ___ ___     ________.______________ ____   ____  ____. ____   ________    _______
-//   /  _____/|    |   |   \__    ___|_   ___ \ /   |   \   /  _____/|   \_   _____/ \   \ /   / |    | \   \ /   /_   |   \   _  \
-//  /   \  ___|    |   |   | |    |  /    \  \//    ~    \ /   \  ___|   ||    __)    \   Y   /  |    |  \   Y   / |   |   /  /_\  \
-//  \    \_\  \    |___|   | |    |  \     \___\    Y    / \    \_\  \   ||     \      \     /\__|    |   \     /  |   |   \  \_/   \
-//   \______  /_______ \___| |____|   \______  /\___|_  /   \______  /___|\___  /       \___/\________|    \___/   |___| /\ \_____  /
+//    ________.____    .______________________   ___ ___     ________.______________ ____   ____  ____. ____   ________
+//   /  _____/|    |   |   \__    ___|_   ___ \ /   |   \   /  _____/|   \_   _____/ \   \ /   / |    | \   \ /   /_   |
+//  /   \  ___|    |   |   | |    |  /    \  \//    ~    \ /   \  ___|   ||    __)    \   Y   /  |    |  \   Y   / |   |
+//  \    \_\  \    |___|   | |    |  \     \___\    Y    / \    \_\  \   ||     \      \     /\__|    |   \     /  |   |
+//   \______  /_______ \___| |____|   \______  /\___|_  /   \______  /___|\___  /       \___/\________|    \___/   |___|.3.1
 
 
 
@@ -31,7 +31,16 @@ var savekit=[{
   "N":""
 
 }];
-
+var notelist=[];
+var count = 0;
+var msecsFirst = 0;
+var msecsPrevious = 0;
+var position=0;
+var isplay;
+var average=0;
+var tap=0;
+var reset=0;
+var seqrequestId;
 var potardslist=[];
 var midi;
 var gifpopup;
@@ -84,6 +93,8 @@ var videotooutput=false;
 var videotolr1=true;
 var videotolr2=false;
 var speinterval;
+var encoder = null;
+var gifrecording=false;
 var sourceA, sourceZ, sourceE, sourceR, sourceT, sourceY,sourceQ,sourceS,sourceD,sourceF,sourceG,sourceH,sourceW,sourceX,sourceC,sourceV,sourceB,sourceN, popcanvas, popctx;
 var loopA, loopZ, loopE, loopR, loopT, loopY,loopQ,loopS,loopD,loopF,loopG,loopH,loopW,loopX,loopC,loopV,loopB,loopN;
 var playmodeA, playmodeZ, playmodeE, playmodeR, playmodeT, playmodeY,playmodeQ,playmodeS,playmodeD,playmodeF,playmodeG,playmodeH,playmodeW,playmodeX,playmodeC,playmodeV,playmodeB,playmodeN;
@@ -110,7 +121,10 @@ $.getScript( "js/parts/layout.js", function() {
                     //  $('#messagebox').append('<p>midi engine ok...</p>');scrollmessages();
 $.getScript( "js/parts/savesystem.js", function() {
 $('#messagebox').html('<p>BACKUP engine loaded...</p>');
+$.getScript( "js/parts/videopong.js", function() {
+$('#messagebox').html('<p>videopong plugin loaded...</p>');
 
+});
 });
 });});});});
 });
