@@ -361,7 +361,7 @@ var result = JSON.parse(e);
 for(var i = 0;i<result.data.length;i++){
   var src = result.data[i][0].url_preview_gif;
   src = src.replace(/^http:\/\//i, 'https://');
-    $('#results').append('<div class="resultbox" data-id="'+result.data[i][0].id+'"><img src="'+src+'"><p>Name:<b>'+result.data[i][0].title+'<b><br>By:'+result.data[i][1].name+'</p><button data-file="'+src+'" class="loadinbankvp">load in bank</button><select class="vpselect" ><option value="A">A</option><option value="Z">Z</option><option value="E">E</option><option value="R">R</option><option value="T">T</option><option value="Y">Y</option><option value="Q">Q</option><option value="S">S</option><option value="D">D</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="W">W</option><option value="X">X</option><option value="C">C</option><option value="V">V</option><option value="B">B</option><option value="N">N</option></div>')
+    $('#results').append('<div class="resultbox" data-id="'+result.data[i][0].id+'"><img src="'+src+'"><p>Name:<b>'+result.data[i][0].title+'<b><br>By:'+result.data[i][1].name+'</p><select class="vpselect" ><option value="A">A</option><option value="Z">Z</option><option value="E">E</option><option value="R">R</option><option value="T">T</option><option value="Y">Y</option><option value="Q">Q</option><option value="S">S</option><option value="D">D</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="W">W</option><option value="X">X</option><option value="C">C</option><option value="V">V</option><option value="B">B</option><option value="N">N</option></select><button data-file="'+src+'" class="loadinbankvp">load in bank</button></div>')
 
 }
 
@@ -387,9 +387,9 @@ return false;
 
 $('body').on('click','.resultbox button',function(){
 
-loadinbank($(this).next().val(),$(this).data('file'));
+loadinbank($(this).prev().val(),$(this).data('file'));
 
-console.log($(this).next().val()+$(this).data('file'))
+console.log($(this).prev().val()+$(this).data('file'))
 
 });
 
@@ -449,7 +449,7 @@ var result = JSON.parse(e);
 for(var i = 0;i<result.data.length;i++){
 var src = result.data[i][0].url_preview_gif;
 src = src.replace(/^http:\/\//i, 'https://');
-  $('#results').append('<div class="resultbox" data-id="'+result.data[i][0].id+'"><img src="'+src+'"><p>Name:<b>'+result.data[i][0].title+'<b><br>By:'+result.data[i][1].name+'</p><button data-file="'+src+'" class="loadinbankvp">load in bank</button><select class="vpselect" ><option value="A">A</option><option value="Z">Z</option><option value="E">E</option><option value="R">R</option><option value="T">T</option><option value="Y">Y</option><option value="Q">Q</option><option value="S">S</option><option value="D">D</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="W">W</option><option value="X">X</option><option value="C">C</option><option value="V">V</option><option value="B">B</option><option value="N">N</option></div>')
+  $('#results').append('<div class="resultbox" data-id="'+result.data[i][0].id+'"><img src="'+src+'"><p>Name:<b>'+result.data[i][0].title+'<b><br>By:'+result.data[i][1].name+'</p><select class="vpselect" ><option value="A">A</option><option value="Z">Z</option><option value="E">E</option><option value="R">R</option><option value="T">T</option><option value="Y">Y</option><option value="Q">Q</option><option value="S">S</option><option value="D">D</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="W">W</option><option value="X">X</option><option value="C">C</option><option value="V">V</option><option value="B">B</option><option value="N">N</option></select><button data-file="'+src+'" class="loadinbankvp">load in bank</button></div>')
 }
 
 
@@ -498,7 +498,7 @@ $('body').on('submit', '#gifurl', function (e)
 			}else{
 
 
-      $('#results').append('<div class="resultbox" ><img src="'+json.gif+'"><br><button data-file="'+json.gif+'" class="loadinbankvp">load in bank</button><select class="vpselect" ><option value="A">A</option><option value="Z">Z</option><option value="E">E</option><option value="R">R</option><option value="T">T</option><option value="Y">Y</option><option value="Q">Q</option><option value="S">S</option><option value="D">D</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="W">W</option><option value="X">X</option><option value="C">C</option><option value="V">V</option><option value="B">B</option><option value="N">N</option></div>')
+      $('#results').append('<div class="resultbox" ><img src="'+json.gif+'"><br><select class="vpselect" ><option value="A">A</option><option value="Z">Z</option><option value="E">E</option><option value="R">R</option><option value="T">T</option><option value="Y">Y</option><option value="Q">Q</option><option value="S">S</option><option value="D">D</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="W">W</option><option value="X">X</option><option value="C">C</option><option value="V">V</option><option value="B">B</option><option value="N">N</option></select><button data-file="'+json.gif+'" class="loadinbankvp">load in bank</button></div>')
 
 
 
